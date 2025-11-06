@@ -1,0 +1,16 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <h3>{{ book.title }}</h3>
+    <p class="text-muted">Genre: {{ book.genre }} • Language: {{ book.language }} • Published: {{ book.published_year }}</p>
+    <h5>Author: {% if author %}<a href="{% url 'catalog:author_detail' author.slug %}">{{ author.first_name }} {{ author.last_name }}</a>{% else %}Unknown{% endif %}</h5>
+    <hr>
+    <h5>Summary</h5>
+    <p>{{ book.summary }}</p>
+    <dl class="row">
+      <dt class="col-sm-3">ISBN</dt><dd class="col-sm-9">{{ book.isbn }}</dd>
+    </dl>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<h2>All Books</h2>
+<div class="row">
+  {% for book in books %}
+  <div class="col-md-4 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'catalog:book_detail' book.slug %}">{{ book.title }}</a></h5>
+        <p class="card-text">{{ book.summary|truncatechars:140 }}</p>
+        <a href="{% url 'catalog:book_detail' book.slug %}" class="btn btn-sm btn-outline-primary">Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

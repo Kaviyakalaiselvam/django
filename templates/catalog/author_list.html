@@ -1,0 +1,17 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<h2>Authors</h2>
+<div class="row">
+  {% for a in authors %}
+  <div class="col-md-4 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'catalog:author_detail' a.slug %}">{{ a.first_name }} {{ a.last_name }}</a></h5>
+        <p class="card-text">{{ a.bio|truncatechars:100 }}</p>
+        <a href="{% url 'catalog:author_detail' a.slug %}" class="btn btn-sm btn-primary">View</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

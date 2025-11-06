@@ -1,0 +1,18 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <h3>{{ author.first_name }} {{ author.last_name }}</h3>
+    <p>{{ author.bio }}</p>
+    <h5>Books by this author</h5>
+    <ul>
+      {% for b in books %}
+      
+        <li><a href="{% url 'catalog:book_detail' b.slug %}">{{ b.title }}</a> ({{ b.published_year }})</li>
+      {% empty %}
+        <li>No books listed.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
